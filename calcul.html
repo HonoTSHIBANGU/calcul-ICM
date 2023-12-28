@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcul de l'IMC</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+  <p class="titre" >Prière saisir la masse en (Kg) et la taille en (m) de la personne. </p>
+ <div class="para1">
+  <p class="para2" >Masse : <input type="number" id="inputMasse" value=""></p>
+  <p class="para3">Taille : <input type="number" id="inputTaille"  value="1,70" > </p>
+</div> 
+<div class="button">
+  <button class="button2" onclick="calcul ()">Cliquez ici pour calculer</button>
+</div>
+  <p id="resultat"></p>
+  <p id="interpretation"></p>
+</body>
+<script>
+  function calcul (){
+    let masse = inputMasse.value;
+    let taille = inputTaille.value;
+    let imc = Math.round(masse/(taille*taille));
+    resultat.innerHTML = "le calcul donne   "+imc+" Kg/m²"
+    if (imc >30 )  {
+      interpretation.innerHTML = "D'après L'OMS, le patient souffre d'obesité";
+    } else if (imc>25){
+      interpretation.innerHTML = "D'après L'OMS, le patient souffre de surpoid";
+    } else if (imc <= 0) {
+      interpretation.innerHTML = "Entrez des bonnes valeurs svp";
+      resultat.innerHTML = "";
+    } else if (imc >= 18.5 && imc <= 24.9) {
+      interpretation.innerHTML ="Vous êtes en bonne santé d'après L'OMS.";
+    } else {
+interpretation.innerHTML = "le patient est en bonne santé";
+    }
+  }
+  
+</script>
+</html>
